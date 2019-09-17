@@ -1,0 +1,56 @@
+<!-- R Commander Markdown Template -->
+
+Replace with Main Title
+=======================
+
+### Your Name
+
+### `r as.character(Sys.Date())`
+
+```{r echo=FALSE}
+# include this code chunk as-is to set options
+knitr::opts_chunk$set(comment=NA, prompt=TRUE, out.width=750, fig.height=8, fig.width=8)
+library(Rcmdr)
+library(car)
+library(RcmdrMisc)
+```
+
+
+```{r echo=FALSE}
+# include this code chunk as-is to enable 3D graphs
+library(rgl)
+knitr::knit_hooks$set(webgl = hook_webgl)
+```
+
+
+```{r}
+Duncan <- read.table("/home/cart3ch/rwork/rprojects/badm_iimtrichy_18-20/data/Duncan.csv", 
+    header = TRUE, sep = ",", na.strings = "NA", dec = ".", strip.white = TRUE)
+```
+
+```{r}
+summary(Duncan)
+```
+
+```{r}
+cor(Duncan[, c("education", "income", "prestige")], use = "complete")
+```
+
+```{r}
+cor(Duncan[, c("education", "income", "prestige")], use = "complete")
+```
+
+```{r}
+Boxplot(~prestige, data = Duncan, id = list(method = "y"))
+```
+
+```{r}
+Boxplot(prestige ~ type, data = Duncan, id = list(method = "y"))
+```
+
+```{r}
+with(Duncan, Hist(prestige, groups = type, scale = "frequency", breaks = "Sturges", 
+    col = "darkgray"))
+```
+
+
